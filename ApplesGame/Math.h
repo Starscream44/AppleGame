@@ -21,6 +21,7 @@ namespace ApplesGame
 
 	sf::Vector2f OurVectorToSf(const Vector2D& v);
 	sf::Vector2f GetSpriteScale(const sf::Sprite& sprite, const Vector2D& desiredSize);
+	sf::Vector2f GetTextOrigin(const sf::Text& text, const Vector2D& relativePosition);
 
 
 	Position2D GetRandomPositionInScreen(float screenWidth, float screenHeight);

@@ -5,11 +5,12 @@
 #include "Player.h"
 #include "Apple.h"
 #include "Rock.h"
+#include "UI.h"
 
 namespace ApplesGame
 {
 
-
+	
 	struct Game
 	{
 		Player player;
@@ -18,11 +19,13 @@ namespace ApplesGame
 
 		// Global game data
 		int numEatenApples = 0;
+		UIState uiState;
 		bool isGameFinished = false;
 		float timeSinceGameFinish = 0.f;
 		sf::RectangleShape background;
 
 		//Resources
+		sf::Font font;
 		sf::Texture playerTexture;
 		sf::Texture appleTexture;
 		sf::Texture rockTexture;

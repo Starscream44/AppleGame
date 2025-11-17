@@ -31,11 +31,14 @@ namespace ApplesGame
 		assert(game.playerTexture.loadFromFile(RESOURCES_PATH + "\\Pacman.png"));
 		assert(game.appleTexture.loadFromFile(RESOURCES_PATH + "\\Apple.png"));
 		assert(game.rockTexture.loadFromFile(RESOURCES_PATH + "\\Rock.png"));
+		assert(game.font.loadFromFile(RESOURCES_PATH + "\\Fonts/Roboto-Regular.ttf"));
 
 
 		game.background.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
 		game.background.setFillColor(sf::Color::Black);
 		game.background.setPosition(0.f, 0.f);
+
+		InitUI(game.uiState, game.font);
 
 		RestartGame(game);
 	}
@@ -134,6 +137,8 @@ namespace ApplesGame
 				RestartGame(game);
 			}
 		}
+		
+		UpdateUI(game.uiState, game, deltaTime);
 	}
 
 	void DrawGame(Game& game, sf::RenderWindow& window)
@@ -150,11 +155,14 @@ namespace ApplesGame
 		{
 			DrawRock(game.rocks[i], window);
 		}
+		DrawUI(game.uiState, window);
 
 	}
+
 
 	void DeinializeGame(Game& game)
 	{
 
 	}
+
 }
