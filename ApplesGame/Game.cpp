@@ -18,7 +18,7 @@ namespace ApplesGame
 		// Init rocks
 		for (int i = 0; i < NUM_ROCKS; ++i)
 		{
-			InitRock(game.rocks[i]);
+			InitRock(game.rocks[i], game);
 		}
 
 		game.numEatenApples = 0;
@@ -30,6 +30,8 @@ namespace ApplesGame
 	{
 		assert(game.playerTexture.loadFromFile(RESOURCES_PATH + "\\Pacman.png"));
 		assert(game.appleTexture.loadFromFile(RESOURCES_PATH + "\\Apple.png"));
+		assert(game.rockTexture.loadFromFile(RESOURCES_PATH + "\\Rock.png"));
+
 
 		game.background.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
 		game.background.setFillColor(sf::Color::Black);
@@ -146,8 +148,7 @@ namespace ApplesGame
 
 		for (int i = 0; i < NUM_ROCKS; ++i)
 		{
-			game.rocks[i].shape.setPosition(game.rocks[i].position.x, game.rocks[i].position.y);
-			window.draw(game.rocks[i].shape);
+			DrawRock(game.rocks[i], window);
 		}
 
 	}
