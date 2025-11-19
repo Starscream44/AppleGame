@@ -42,6 +42,14 @@ namespace ApplesGame
 		sf::SoundBuffer hitBuffer;
 		sf::Sound hitSound;
 		sf::Music backgroundMusic;
+		sf::Texture startMenuTexture;
+		sf::Sprite startMenuSprite;
+
+		sf::Texture gameOverTexture;
+		sf::Sprite gameOverSprite;
+
+		sf::Texture winTexture;
+		sf::Sprite winSprite;
 
 		GameScreen currentScreen = GameScreen::MAIN_MENU;
 

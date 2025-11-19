@@ -31,11 +31,32 @@ namespace ApplesGame
 		assert(game.playerTexture.loadFromFile(RESOURCES_PATH + "\\Pacman.png"));
 		assert(game.appleTexture.loadFromFile(RESOURCES_PATH + "\\Apple.png"));
 		assert(game.rockTexture.loadFromFile(RESOURCES_PATH + "\\Rock.png"));
+
+		assert(game.startMenuTexture.loadFromFile(RESOURCES_PATH + "\\main.png"));
+		game.startMenuSprite.setTexture(game.startMenuTexture);
+		game.startMenuSprite.setScale(
+			float(SCREEN_WIDTH) / game.startMenuTexture.getSize().x,
+			float(SCREEN_HEIGHT) / game.startMenuTexture.getSize().y);
+
+		assert(game.gameOverTexture.loadFromFile(RESOURCES_PATH + "\\loose.png"));
+		game.gameOverSprite.setTexture(game.gameOverTexture);
+		game.gameOverSprite.setScale(
+			float(SCREEN_WIDTH) / game.gameOverTexture.getSize().x,
+			float(SCREEN_HEIGHT) / game.gameOverTexture.getSize().y);
+
+		assert(game.winTexture.loadFromFile(RESOURCES_PATH + "\\win.png"));
+		game.winSprite.setTexture(game.winTexture);
+		game.winSprite.setScale(
+			float(SCREEN_WIDTH) / game.winTexture.getSize().x,
+			float(SCREEN_HEIGHT) / game.winTexture.getSize().y);
+
+
 		assert(game.font.loadFromFile(RESOURCES_PATH + "\\Fonts/Roboto-Regular.ttf"));
 		assert(game.eatBuffer.loadFromFile(RESOURCES_PATH +"\\Sounds/AppleEat.wav"));
 		game.eatSound.setBuffer(game.eatBuffer);
 		assert(game.hitBuffer.loadFromFile(RESOURCES_PATH +"\\Sounds/Crash.wav"));
 		game.hitSound.setBuffer(game.hitBuffer);
+
 
 		assert(game.backgroundMusic.openFromFile(RESOURCES_PATH + "\\Sounds/Background.wav"));
 		game.backgroundMusic.setLoop(true);
@@ -253,6 +274,7 @@ namespace ApplesGame
 	{
 		if (game.mainMenuSelected == 0)
 		{
+			
 			game.menuButtonStart.setFillColor(sf::Color(100, 100, 100));
 			game.menuButtonExit.setFillColor(sf::Color(50, 50, 50));
 		}
@@ -262,7 +284,7 @@ namespace ApplesGame
 			game.menuButtonExit.setFillColor(sf::Color(100, 100, 100));
 		}
 
-		window.draw(game.background); 
+		window.draw(game.startMenuSprite);
 		window.draw(game.menuButtonStart);
 		window.draw(game.menuButtonExit);
 		window.draw(game.menuTextStart);
@@ -306,16 +328,8 @@ namespace ApplesGame
 			game.menuButtonExit.setFillColor(sf::Color(100, 100, 100));
 		}
 
-		// Заголовок "VICTORY" — пока можно без красивого текста
-		sf::Text title;
-		title.setFont(game.font);
-		title.setString("VICTORY!");
-		title.setCharacterSize(60);
-		title.setFillColor(sf::Color::White);
-		title.setPosition(200.f, 80.f);
-
-		window.draw(title);
-
+	
+		window.draw(game.winSprite);
 		window.draw(game.menuButtonStart);
 		window.draw(game.menuButtonExit);
 
@@ -357,16 +371,7 @@ namespace ApplesGame
 			game.menuButtonExit.setFillColor(sf::Color(100, 100, 100));
 		}
 
-		// Заголовок
-		sf::Text title;
-		title.setFont(game.font);
-		title.setString("GAME OVER");
-		title.setCharacterSize(60);
-		title.setFillColor(sf::Color::Red);
-		title.setPosition(150.f, 80.f);
-
-		window.draw(title);
-
+		window.draw(game.gameOverSprite);
 		window.draw(game.menuButtonStart);
 		window.draw(game.menuButtonExit);
 
@@ -379,23 +384,23 @@ namespace ApplesGame
 		// START button
 		game.menuButtonStart.setSize(sf::Vector2f(300.f, 60.f));
 		game.menuButtonStart.setFillColor(sf::Color(50, 50, 50));
-		game.menuButtonStart.setPosition(250.f, 200.f);
+		game.menuButtonStart.setPosition(250.f, 400.f);
 
 		game.menuTextStart.setFont(game.font);
 		game.menuTextStart.setString("START");
 		game.menuTextStart.setCharacterSize(32);
 		game.menuTextStart.setFillColor(sf::Color::White);
-		game.menuTextStart.setPosition(330.f, 210.f);
+		game.menuTextStart.setPosition(350.f, 410.f);
 
 		// EXIT button
 		game.menuButtonExit.setSize(sf::Vector2f(300.f, 60.f));
 		game.menuButtonExit.setFillColor(sf::Color(50, 50, 50));
-		game.menuButtonExit.setPosition(250.f, 300.f);
+		game.menuButtonExit.setPosition(250.f, 500.f);
 
 		game.menuTextExit.setFont(game.font);
 		game.menuTextExit.setString("EXIT");
 		game.menuTextExit.setCharacterSize(32);
 		game.menuTextExit.setFillColor(sf::Color::White);
-		game.menuTextExit.setPosition(350.f, 310.f);
+		game.menuTextExit.setPosition(365.f, 510.f);
 	}
 }

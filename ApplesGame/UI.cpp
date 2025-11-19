@@ -13,7 +13,7 @@ namespace ApplesGame
 		uiState.inputHintText.setFont(font);
 		uiState.inputHintText.setCharacterSize(24);
 		uiState.inputHintText.setFillColor(sf::Color::White);
-		uiState.inputHintText.setString("Use arrow keys to move, Space to restart, ESC to exit");
+		uiState.inputHintText.setString("Use arrow keys to move! Eat 10 Apples");
 		uiState.inputHintText.setOrigin(GetTextOrigin(uiState.inputHintText, { 1.f, 0.f }));
 
 		uiState.isGameOverTextVisible = false;
