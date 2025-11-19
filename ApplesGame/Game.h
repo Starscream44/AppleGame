@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include <SFML/Audio.hpp>
 #include "Constants.h"
 #include "Math.h"
 #include "Player.h"
@@ -10,7 +11,14 @@
 namespace ApplesGame
 {
 
-	
+	enum class GameScreen
+	{
+		MAIN_MENU,
+		GAMEPLAY,
+		VICTORY,
+		GAME_OVER
+	};
+
 	struct Game
 	{
 		Player player;
@@ -29,6 +37,21 @@ namespace ApplesGame
 		sf::Texture playerTexture;
 		sf::Texture appleTexture;
 		sf::Texture rockTexture;
+		sf::SoundBuffer eatBuffer;
+		sf::Sound eatSound;
+		sf::SoundBuffer hitBuffer;
+		sf::Sound hitSound;
+		sf::Music backgroundMusic;
+
+		GameScreen currentScreen = GameScreen::MAIN_MENU;
+
+		int mainMenuSelected = 0; 
+
+		sf::RectangleShape menuButtonStart;
+		sf::RectangleShape menuButtonExit;
+
+		sf::Text menuTextStart;
+		sf::Text menuTextExit;
 	};
 
 	void RestartGame(Game& game);
@@ -36,4 +59,18 @@ namespace ApplesGame
 	void UpdateGame(Game& game, float deltaTime);
 	void DrawGame(Game& game, sf::RenderWindow& window);
 	void DeinializeGame(Game& game);
+
+	void InitMainMenu(Game& game);
+
+	void UpdateMainMenu(Game& game);
+	void DrawMainMenu(Game& game, sf::RenderWindow& window);
+
+	void UpdateGameplay(Game& game, float deltaTime);
+	void DrawGameplay(Game& game, sf::RenderWindow& window);
+
+	void UpdateVictoryScreen(Game& game);
+	void DrawVictoryScreen(Game& game, sf::RenderWindow& window);
+
+	void UpdateGameOverScreen(Game& game);
+	void DrawGameOverScreen(Game& game, sf::RenderWindow& window);
 }
