@@ -14,6 +14,7 @@ Randomized apple and obstacle spawning
 Clean C++/SFML project structure
 
 ▶️ Gameplay Video
+
 https://youtu.be/9echKl7cfaA
 
 🛠️ How to Build
